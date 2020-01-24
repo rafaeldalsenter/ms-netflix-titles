@@ -9,6 +9,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AB063C1F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsNetflixTitles.Domain.Tests", "Tests\MsNetflixTitles.Domain.Tests\MsNetflixTitles.Domain.Tests.csproj", "{E52BF4CC-8A04-40A5-9533-2B2DCA5168C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsNetflixTitles.CrossCutting", "MsNetflixTitles.CrossCutting\MsNetflixTitles.CrossCutting.csproj", "{7BBE794B-0A50-4CB1-BB9C-D1053BBC671A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsNetflixTitles.Services", "MsNetflixTitles.Services\MsNetflixTitles.Services.csproj", "{90DCCE6D-AB31-4B7C-85E6-CDCF1C644C55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsNetflixTitles.Services.Tests", "Tests\MsNetflixTitles.Services.Tests\MsNetflixTitles.Services.Tests.csproj", "{DF5B07DB-1EE1-453F-8ED1-B5C02FE13EEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsNetflixTitles.Api", "MsNetflixTitles.Api\MsNetflixTitles.Api.csproj", "{714CD65B-5B39-4892-84FF-AD1FC4882BA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +31,29 @@ Global
 		{E52BF4CC-8A04-40A5-9533-2B2DCA5168C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E52BF4CC-8A04-40A5-9533-2B2DCA5168C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E52BF4CC-8A04-40A5-9533-2B2DCA5168C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BBE794B-0A50-4CB1-BB9C-D1053BBC671A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BBE794B-0A50-4CB1-BB9C-D1053BBC671A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BBE794B-0A50-4CB1-BB9C-D1053BBC671A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BBE794B-0A50-4CB1-BB9C-D1053BBC671A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90DCCE6D-AB31-4B7C-85E6-CDCF1C644C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90DCCE6D-AB31-4B7C-85E6-CDCF1C644C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90DCCE6D-AB31-4B7C-85E6-CDCF1C644C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90DCCE6D-AB31-4B7C-85E6-CDCF1C644C55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF5B07DB-1EE1-453F-8ED1-B5C02FE13EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF5B07DB-1EE1-453F-8ED1-B5C02FE13EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF5B07DB-1EE1-453F-8ED1-B5C02FE13EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF5B07DB-1EE1-453F-8ED1-B5C02FE13EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714CD65B-5B39-4892-84FF-AD1FC4882BA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714CD65B-5B39-4892-84FF-AD1FC4882BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714CD65B-5B39-4892-84FF-AD1FC4882BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{714CD65B-5B39-4892-84FF-AD1FC4882BA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E52BF4CC-8A04-40A5-9533-2B2DCA5168C3} = {AB063C1F-FB15-4155-8153-CE0B790DA2A2}
+		{DF5B07DB-1EE1-453F-8ED1-B5C02FE13EEC} = {AB063C1F-FB15-4155-8153-CE0B790DA2A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D8A7339D-C39C-4746-A6FC-5020B9A74B3A}
