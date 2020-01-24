@@ -26,11 +26,23 @@ namespace MsNetflixTitles.Domain
 
         public void AddId(Guid id)
         {
+            if (id == default)
+            {
+                AddError("Without id");
+                return;
+            }
+
             Id = id;
         }
 
         public void AddTitle(string title)
         {
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                AddError("Without title");
+                return;
+            }
+
             Title = title;
         }
 

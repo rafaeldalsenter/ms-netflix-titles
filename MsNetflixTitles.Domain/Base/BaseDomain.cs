@@ -14,6 +14,6 @@ namespace MsNetflixTitles.Domain.Base
             ErrorMessages.Add(message);
         }
 
-        public bool IsValid { get => !ErrorMessages?.Any() ?? false; }
+        public bool IsValid() => !ErrorMessages?.Any() ?? true;
     }
 }
