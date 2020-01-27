@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MsNetflixTitles.CrossCutting\MsNetflixTitles.CrossCutting.csproj" />
+    <ProjectReference Include="..\MsNetflixTitles.Domain\MsNetflixTitles.Domain.csproj" />
   </ItemGroup>
 
 </Project>

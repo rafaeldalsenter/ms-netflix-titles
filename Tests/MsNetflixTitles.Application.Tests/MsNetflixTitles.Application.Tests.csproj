@@ -19,8 +19,4 @@
     <ProjectReference Include="..\..\MsNetflixTitles.CrossCutting\MsNetflixTitles.CrossCutting.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="FakeObjects\" />
-  </ItemGroup>
-
 </Project>

@@ -1,9 +1,9 @@
 ﻿using MsNetflixTitles.CrossCutting.Dtos;
 using System.Threading.Tasks;
 
-namespace MsNetflixTitles.Application.Queries
+namespace MsNetflixTitles.Application.Repositories
 {
-    public interface INetflixTitlesQueries
+    public interface INetflixTitlesRepository
     {
         Task<DirectorsByCountryDto> GetDirectorsByCountry(string countryName);
     }

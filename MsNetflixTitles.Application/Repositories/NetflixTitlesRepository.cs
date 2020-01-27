@@ -4,13 +4,13 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MsNetflixTitles.Application.Queries
+namespace MsNetflixTitles.Application.Repositories
 {
-    public class NetflixTitlesQueries : INetflixTitlesQueries
+    public class NetflixTitlesRepository : INetflixTitlesRepository
     {
         private readonly ICassandraContext _cassandraContext;
 
-        public NetflixTitlesQueries(ICassandraContext cassandraContext)
+        public NetflixTitlesRepository(ICassandraContext cassandraContext)
         {
             _cassandraContext = cassandraContext;
         }

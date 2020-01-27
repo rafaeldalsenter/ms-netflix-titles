@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MsNetflixTitles.Application.Queries;
+using MsNetflixTitles.Application.Repositories;
 using MsNetflixTitles.CrossCutting.Dtos;
 using System;
 using System.Collections.Generic;
@@ -12,9 +12,9 @@ namespace MsNetflixTitles.Api.Controllers
     [Route("api/v1/[controller]")]
     public class NetflixTitlesController : ControllerBase
     {
-        private readonly INetflixTitlesQueries _netflixTitlesQueries;
+        private readonly INetflixTitlesRepository _netflixTitlesQueries;
 
-        public NetflixTitlesController(INetflixTitlesQueries netflixTitlesQueries)
+        public NetflixTitlesController(INetflixTitlesRepository netflixTitlesQueries)
         {
             _netflixTitlesQueries = netflixTitlesQueries;
         }

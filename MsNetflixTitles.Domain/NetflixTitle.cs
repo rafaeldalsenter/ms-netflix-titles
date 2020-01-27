@@ -1,4 +1,5 @@
-﻿using MsNetflixTitles.Domain.Base;
+﻿using MsNetflixTitles.CrossCutting.Extensions;
+using MsNetflixTitles.Domain.Base;
 using System;
 
 namespace MsNetflixTitles.Domain
@@ -37,7 +38,7 @@ namespace MsNetflixTitles.Domain
 
         public void AddTitle(string title)
         {
-            if (string.IsNullOrWhiteSpace(title))
+            if (title.IsNullOrWhiteSpace())
             {
                 AddError("Without title");
                 return;

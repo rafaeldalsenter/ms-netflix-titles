@@ -1,5 +1,5 @@
 ﻿using Moq;
-using MsNetflixTitles.Application.Queries;
+using MsNetflixTitles.Application.Repositories;
 using MsNetflixTitles.CrossCutting;
 using MsNetflixTitles.CrossCutting.Dtos;
 using System;
@@ -9,9 +9,9 @@ using Xunit;
 
 namespace MsNetflixTitles.Application.Tests
 {
-    public class NetflixTitlesQueriesTests
+    public class NetflixTitlesRepositoriesTests
     {
-        private INetflixTitlesQueries MockQueryForGetDirectorsByCountry(List<DirectorByCountryDto> result)
+        private INetflixTitlesRepository MockQueryForGetDirectorsByCountry(List<DirectorByCountryDto> result)
         {
             var mockCassandraContext = new Mock<ICassandraContext>();
 
@@ -21,10 +21,10 @@ namespace MsNetflixTitles.Application.Tests
                 .Setup(m => m.SelectAsync<DirectorByCountryDto>(It.IsAny<string>()))
                 .Returns(() => taskResult);
 
-            return new NetflixTitlesQueries(mockCassandraContext.Object);
+            return new NetflixTitlesRepository(mockCassandraContext.Object);
         }
 
-        private INetflixTitlesQueries MockExceptionForGetDirectorsByCountry()
+        private INetflixTitlesRepository MockExceptionForGetDirectorsByCountry()
         {
             var mockCassandraContext = new Mock<ICassandraContext>();
 
@@ -32,7 +32,7 @@ namespace MsNetflixTitles.Application.Tests
                 .Setup(m => m.SelectAsync<DirectorByCountryDto>(It.IsAny<string>()))
                 .Throws(new Exception());
 
-            return new NetflixTitlesQueries(mockCassandraContext.Object);
+            return new NetflixTitlesRepository(mockCassandraContext.Object);
         }
 
         [Fact]
