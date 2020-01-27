@@ -54,6 +54,7 @@ namespace MsNetflixTitles.Api
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Netflix Titles API");
+                c.RoutePrefix = "";
             });
 
             app.UseHttpsRedirection();
