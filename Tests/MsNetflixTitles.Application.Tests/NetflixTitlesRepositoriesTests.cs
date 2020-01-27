@@ -11,14 +11,14 @@ namespace MsNetflixTitles.Application.Tests
 {
     public class NetflixTitlesRepositoriesTests
     {
-        private INetflixTitlesRepository MockQueryForGetDirectorsByCountry(List<DirectorByCountryDto> result)
+        private INetflixTitlesRepository MockQueryForGetDirectorsByCountry(List<string> result)
         {
             var mockCassandraContext = new Mock<ICassandraContext>();
 
-            var taskResult = Task.FromResult<IEnumerable<DirectorByCountryDto>>(result);
+            var taskResult = Task.FromResult<IEnumerable<string>>(result);
 
             mockCassandraContext
-                .Setup(m => m.SelectAsync<DirectorByCountryDto>(It.IsAny<string>()))
+                .Setup(m => m.SelectAsync<string>(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(() => taskResult);
 
             return new NetflixTitlesRepository(mockCassandraContext.Object);
@@ -29,7 +29,7 @@ namespace MsNetflixTitles.Application.Tests
             var mockCassandraContext = new Mock<ICassandraContext>();
 
             mockCassandraContext
-                .Setup(m => m.SelectAsync<DirectorByCountryDto>(It.IsAny<string>()))
+                .Setup(m => m.SelectAsync<string>(It.IsAny<string>()))
                 .Throws(new Exception());
 
             return new NetflixTitlesRepository(mockCassandraContext.Object);
@@ -38,7 +38,37 @@ namespace MsNetflixTitles.Application.Tests
         [Fact]
         public async Task GetDirectorsByCountry_WithoutInfo()
         {
-            var resultFromCassandra = new List<DirectorByCountryDto>();
+            var resultFromCassandra = new List<string>();
+
+            var mock = MockQueryForGetDirectorsByCountry(resultFromCassandra);
+
+            var result = await mock.GetDirectorsByCountry("Brazil");
+
+            Assert.False(result.IsValid());
+        }
+
+        [Fact]
+        public async Task GetDirectorsByCountry_WithInfo()
+        {
+            var resultFromCassandra = new List<string>
+            {
+                "Director1"
+            };
+
+            var mock = MockQueryForGetDirectorsByCountry(resultFromCassandra);
+
+            var result = await mock.GetDirectorsByCountry("Brazil");
+
+            Assert.True(result.IsValid());
+        }
+
+        [Fact]
+        public async Task GetDirectorsByCountry_WithCountryEmpty()
+        {
+            var resultFromCassandra = new List<string>
+            {
+                "Director1"
+            };
 
             var mock = MockQueryForGetDirectorsByCountry(resultFromCassandra);
 
@@ -48,26 +78,11 @@ namespace MsNetflixTitles.Application.Tests
         }
 
         [Fact]
-        public async Task GetDirectorsByCountry_WithInfo()
-        {
-            var resultFromCassandra = new List<DirectorByCountryDto>
-            {
-                new DirectorByCountryDto(){ Name = "Director1", FilmsCount = 1 }
-            };
-
-            var mock = MockQueryForGetDirectorsByCountry(resultFromCassandra);
-
-            var result = await mock.GetDirectorsByCountry("");
-
-            Assert.True(result.IsValid());
-        }
-
-        [Fact]
         public async Task GetDirectorsByCountry_Exception()
         {
             var mock = MockExceptionForGetDirectorsByCountry();
 
-            var result = await mock.GetDirectorsByCountry("");
+            var result = await mock.GetDirectorsByCountry("Brazil");
 
             Assert.False(result.IsValid());
         }
