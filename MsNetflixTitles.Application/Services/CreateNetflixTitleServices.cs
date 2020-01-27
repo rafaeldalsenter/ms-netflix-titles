@@ -21,26 +21,33 @@ namespace MsNetflixTitles.Application.Services
 
         public async Task<NetflixTitleDto> Create(NetflixTitleDto dto)
         {
-            dto.Id = Guid.NewGuid();
-
-            var netFlixTitleDomain = new NetflixTitleBuilder()
-                .WithTitle(dto.Title)
-                .WithDirector(dto.Director)
-                .WithCountry(dto.Country)
-                .WithDurationMin(dto.DurationMin)
-                .WithCast(dto.Cast)
-                .WithId(dto.Id)
-                .Build();
-
-            if (!netFlixTitleDomain.IsValid())
+            try
             {
-                return new NetflixTitleDto
-                {
-                    ErrorMessage = netFlixTitleDomain.ErrorMessages.FirstOrDefault()
-                };
-            }
+                dto.Id = Guid.NewGuid();
 
-            await _cassandraContext.InsertAsync(netFlixTitleDomain);
+                var netFlixTitleDomain = new NetflixTitleBuilder()
+                    .WithTitle(dto.Title)
+                    .WithDirector(dto.Director)
+                    .WithCountry(dto.Country)
+                    .WithDurationMin(dto.DurationMin)
+                    .WithCast(dto.Cast)
+                    .WithId(dto.Id)
+                    .Build();
+
+                if (!netFlixTitleDomain.IsValid())
+                {
+                    return new NetflixTitleDto
+                    {
+                        ErrorMessage = netFlixTitleDomain.ErrorMessages.FirstOrDefault()
+                    };
+                }
+
+                await _cassandraContext.InsertAsync(netFlixTitleDomain);
+            }
+            catch (Exception ex)
+            {
+                dto.ErrorMessage = $"Exceção não tratada: {ex.Message}";
+            }
 
             return dto;
         }

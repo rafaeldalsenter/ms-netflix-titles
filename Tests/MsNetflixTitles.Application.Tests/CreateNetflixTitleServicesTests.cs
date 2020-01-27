@@ -24,6 +24,17 @@ namespace MsNetflixTitles.Application.Tests
             return new CreateNetflixTitleServices(mockCassandraContext.Object);
         }
 
+        private ICreateNetflixTitleServices MockExceptionForCreate()
+        {
+            var mockCassandraContext = new Mock<ICassandraContext>();
+
+            mockCassandraContext
+                .Setup(m => m.InsertAsync<NetflixTitle>(It.IsAny<NetflixTitle>()))
+                .Throws(new Exception());
+
+            return new CreateNetflixTitleServices(mockCassandraContext.Object);
+        }
+
         [Fact]
         public async Task Create_DomainIsValid()
         {
@@ -55,6 +66,24 @@ namespace MsNetflixTitles.Application.Tests
             };
 
             var mockService = MockServiceForCreate();
+
+            var result = await mockService.Create(dto);
+
+            Assert.False(result.IsValid());
+        }
+
+        [Fact]
+        public async Task Create_Exception()
+        {
+            var dto = new NetflixTitleDto
+            {
+                Director = "director",
+                Country = "country",
+                DurationMin = 1,
+                Cast = "cast"
+            };
+
+            var mockService = MockExceptionForCreate();
 
             var result = await mockService.Create(dto);
 

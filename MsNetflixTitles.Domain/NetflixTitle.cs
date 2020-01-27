@@ -29,7 +29,7 @@ namespace MsNetflixTitles.Domain
         {
             if (id == default)
             {
-                AddError("Without id");
+                AddError("Faltou preencher o valor Id");
                 return;
             }
 
@@ -40,7 +40,7 @@ namespace MsNetflixTitles.Domain
         {
             if (title.IsNullOrWhiteSpace())
             {
-                AddError("Without title");
+                AddError("Faltou preencher o valor 'title'");
                 return;
             }
 
