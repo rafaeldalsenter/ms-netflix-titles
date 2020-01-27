@@ -15,8 +15,8 @@ namespace MsNetflixTitles.CrossCutting
         public CassandraContext(IConfiguration configuration)
         {
             _cluster = Cluster.Builder()
-                            .AddContactPoints(configuration.GetSection("HostCassandra").Value)
-                            .Build();
+                .AddContactPoint(configuration.GetSection("HostCassandra").Value)
+                .Build();
 
             _session = _cluster.Connect(configuration.GetSection("KeyspaceCassandra").Value);
 
