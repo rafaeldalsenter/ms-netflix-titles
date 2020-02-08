@@ -2,6 +2,8 @@
 
 🎞 Microservice para consulta de base de dados do Netflix
 
+Base de dados obtida no [Kaggle](https://www.kaggle.com/shivamb/netflix-shows/data#)
+
 Esse Microservice foi criado para a série de artigos [Criando um microservice de alta disponibilidade em C# com banco de dados NoSQL](https://rafaeldalsenter.github.io/csharp/cassandra/aws/2020/01/19/microservice-alta-disponibilidade-1.html), onde demonstro desde a instalação do banco de dados Cassandra, a criação deste MS para leitura e escrita nele, e posteriormente a publicação dos mesmos na AWS e configurações de escalabilidade.
 
 Projetos da Solution:
